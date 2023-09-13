@@ -24,5 +24,8 @@ TEST_CASE("Prime test - sieve of erastothenes", "[benchmark][Prime]") {
     BENCHMARK("small") {
         return sieve_of_erastothenes(SMALL);
     };
+    BENCHMARK("small") {
+        return sieve_of_erastothenes_opt(SMALL);
+    };
 }
 

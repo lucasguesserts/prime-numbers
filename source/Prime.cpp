@@ -1,5 +1,7 @@
+#include <bitset>
 #include <cmath>
 #include <set>
+#include <vector>
 
 #include "Prime.hpp"
 
@@ -18,7 +20,7 @@ bool is_prime_naive(const Number n) {
 
 auto is_prime_odds(const Number n) -> bool {
     const auto limit = integer_sqrt(n);
-    for (auto i = Number(3); i < limit; i+=2) {
+    for (auto i = Number(3); i < limit; i += 2) {
         if (n % i == 0) {
             return false;
         }
@@ -42,6 +44,22 @@ auto sieve_of_erastothenes(const Number n) -> std::set<Number> {
                 it = pool.erase(it);
             } else {
                 ++it;
+            }
+        }
+    }
+    return primes;
+}
+
+auto sieve_of_erastothenes_opt(const Number n) -> std::set<Number> {
+    // create list of primes in [0 ... n]
+    std::vector<bool> bs(n, true);
+    std::set<Number> primes;
+    bs[0] = bs[1] = false;
+    for (auto i = Number(2); i <= n; ++i) {
+        if (bs[i]) {
+            primes.insert(i);
+            for (auto j = i * i; j <= n; j += i) {
+                bs[j] = 0;
             }
         }
     }
