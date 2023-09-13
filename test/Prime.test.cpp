@@ -89,3 +89,10 @@ TEST_CASE("greatest common divisor", "[Prime]") {
     CHECK(gcd(2762424, 6753) == 3);
     CHECK(gcd(2762424, 940752) == (2 * 2 * 2) * (3 * 3));
 }
+
+TEST_CASE("least common multiple", "[Prime]") {
+    CHECK(lcm(2, 3) == 6);
+    CHECK(lcm(100, 1000) == 1000);
+    CHECK(lcm(2762424, 6753) == 6218216424L);
+    CHECK(lcm(2762424, 940752) == 36093831984L);
+}

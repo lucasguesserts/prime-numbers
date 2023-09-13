@@ -17,5 +17,6 @@ auto compute_factor(Number N, const Number p) -> std::pair<Number, Number>;
 auto factorize(const Number N) -> Factorization;
 
 auto gcd(const Number x, const Number y) -> Number;
+auto lcm(const Number x, const Number y) -> Number;
 
 #endif

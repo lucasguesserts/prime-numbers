@@ -113,3 +113,8 @@ auto gcd(const Number x, const Number y) -> Number {
         ? x
         : gcd(y, x % y);
 }
+
+auto lcm(const Number x, const Number y) -> Number {\
+    const auto g = gcd(x, y);
+    return x * y / g;
+}
