@@ -5,10 +5,12 @@
 
 #include "Number.hpp"
 
-bool is_prime_naive(const Number n);
+auto integer_sqrt(const Number n) -> Number;
 
-auto is_prime_odds(const Number n) -> bool;
+bool is_prime_naive(const Number n); // O(N)
 
-auto sieve_of_erastothenes(const Number n) -> std::set<Number>;
+auto is_prime_odds(const Number n) -> bool; // O(sqrt(N))
+
+auto sieve_of_erastothenes(const Number n) -> std::set<Number>; //  O(N log log N)
 
 #endif

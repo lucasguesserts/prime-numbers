@@ -3,6 +3,10 @@
 
 #include "Prime.hpp"
 
+auto integer_sqrt(const Number n) -> Number {
+    return static_cast<Number>(std::floor(std::sqrt(n)));
+}
+
 bool is_prime_naive(const Number n) {
     for (auto i = Number(2); i < n; ++i) {
         if (n % i == 0) {
@@ -13,7 +17,7 @@ bool is_prime_naive(const Number n) {
 }
 
 auto is_prime_odds(const Number n) -> bool {
-    const auto limit = static_cast<Number>(std::floor(std::sqrt(n)));
+    const auto limit = integer_sqrt(n);
     for (auto i = Number(3); i < limit; i+=2) {
         if (n % i == 0) {
             return false;
