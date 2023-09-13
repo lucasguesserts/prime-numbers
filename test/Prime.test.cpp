@@ -3,16 +3,22 @@
 #include "Prime.hpp"
 #include "PrimeNumbers.hpp"
 
-#define RUN(f) \
-SECTION("f") { \
-    for (const auto n : SOME_PRIME_NUMBERS) { \
-        CHECK(f(n)); \
-    } \
-}
+#define RUN(f)                                    \
+    SECTION("f") {                                \
+        for (const auto n : SOME_PRIME_NUMBERS) { \
+            CHECK(f(n));                          \
+        }                                         \
+    }
 
 TEST_CASE("Prime test", "[Prime]") {
     RUN(is_prime_naive);
     RUN(is_prime_odds);
+    SECTION("is_prime_erastothenes") {
+        const auto primes = sieve_of_erastothenes_opt(200);
+        for (const auto n : SOME_PRIME_NUMBERS) {
+            CHECK(is_prime_erastothenes(n, primes));
+        }
+    }
 }
 
 TEST_CASE("sieve of erastothenes", "[Prime]") {

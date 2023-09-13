@@ -1,6 +1,6 @@
-#include <bitset>
 #include <cmath>
-#include <set>
+#include <iterator>
+#include <stdexcept>
 #include <vector>
 
 #include "Prime.hpp"
@@ -28,9 +28,9 @@ auto is_prime_odds(const Number n) -> bool {
     return true;
 }
 
-auto sieve_of_erastothenes(const Number n) -> std::set<Number> {
-    auto pool = std::set<Number>();
-    auto primes = std::set<Number>();
+auto sieve_of_erastothenes(const Number n) -> NumberSet {
+    auto pool = NumberSet();
+    auto primes = NumberSet();
     // initialize pool
     for (auto i = Number(2); i <= n; ++i) {
         pool.insert(i);
@@ -50,10 +50,10 @@ auto sieve_of_erastothenes(const Number n) -> std::set<Number> {
     return primes;
 }
 
-auto sieve_of_erastothenes_opt(const Number n) -> std::set<Number> {
+auto sieve_of_erastothenes_opt(const Number n) -> NumberSet {
     // create list of primes in [0 ... n]
     std::vector<bool> bs(n, true);
-    std::set<Number> primes;
+    NumberSet primes;
     bs[0] = bs[1] = false;
     for (auto i = Number(2); i <= n; ++i) {
         if (bs[i]) {
@@ -64,4 +64,16 @@ auto sieve_of_erastothenes_opt(const Number n) -> std::set<Number> {
         }
     }
     return primes;
+}
+
+auto is_prime_erastothenes(const Number n, const NumberSet & primes) -> bool {
+    const auto last_prime = *(std::prev(primes.end()));
+    if (n > last_prime * last_prime) {
+        throw std::runtime_error("the input value must be smaller than the square of the last prime");
+    }
+    if (primes.count(n) > 0) { return true; }
+    for (const auto i : primes) {
+        if (n % i == 0) { return false; }
+    }
+    return true;
 }
