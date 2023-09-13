@@ -30,7 +30,7 @@ auto sieve_of_erastothenes(const Number n) -> std::set<Number> {
     auto pool = std::set<Number>();
     auto primes = std::set<Number>();
     // initialize pool
-    for (auto i = Number(2); i < n; ++i) {
+    for (auto i = Number(2); i <= n; ++i) {
         pool.insert(i);
     }
     while (!pool.empty()) {
