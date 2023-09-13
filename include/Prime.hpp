@@ -5,4 +5,6 @@
 
 bool is_prime_naive(const Number n);
 
+auto is_prime_odds(const Number n) -> bool;
+
 #endif

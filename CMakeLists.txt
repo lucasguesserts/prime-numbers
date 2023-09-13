@@ -29,7 +29,7 @@ set(
 )
 
 add_library(${PROJECT_LIBRARY} SHARED ${PROJECT_SOURCE_FILES})
-target_link_libraries(${PROJECT_LIBRARY} Catch2::Catch2WithMain)
+target_link_libraries(${PROJECT_LIBRARY} m Catch2::Catch2WithMain)
 
 enable_testing()
 add_subdirectory(test)

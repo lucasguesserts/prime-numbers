@@ -7,4 +7,15 @@ TEST_CASE("Prime test - small number", "[benchmark][Prime]") {
     BENCHMARK("naive") {
         return is_prime_naive(N);
     };
+    BENCHMARK("odds") {
+        return is_prime_odds(N);
+    };
 }
+
+TEST_CASE("Prime test - large number", "[benchmark][Prime]") {
+    const auto N = Number(1000000007);
+    BENCHMARK("odds") {
+        return is_prime_odds(N);
+    };
+}
+
