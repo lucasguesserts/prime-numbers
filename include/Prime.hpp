@@ -3,6 +3,6 @@
 
 #include "Number.hpp"
 
-bool is_prime(const Number n);
+bool is_prime_naive(const Number n);
 
 #endif

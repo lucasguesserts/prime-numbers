@@ -6,7 +6,7 @@
 TEST_CASE("Prime test", "[Prime]") {
     SECTION("naive") {
         for (const auto n : SOME_PRIME_NUMBERS) {
-            CHECK(is_prime(n));
+            CHECK(is_prime_naive(n));
         }
     }
 }
