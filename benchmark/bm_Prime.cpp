@@ -19,3 +19,14 @@ TEST_CASE("Prime test - large number", "[benchmark][Prime]") {
     };
 }
 
+TEST_CASE("Prime test - sieve of erastothenes", "[benchmark][Prime]") {
+    const auto SMALL = Number(10000);
+    const auto LARGE = Number(10000000);
+    BENCHMARK("small") {
+        return sieve_of_erastothenes(SMALL);
+    };
+    BENCHMARK("large") {
+        return sieve_of_erastothenes(LARGE);
+    };
+}
+
