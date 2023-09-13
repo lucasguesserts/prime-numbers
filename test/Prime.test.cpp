@@ -82,3 +82,10 @@ TEST_CASE("factorization", "[Prime]") {
     factorization_test(6753, {{3, 1}, {2251, 1}});
     factorization_test(2762424, {{2, 3}, {3, 5}, {7, 2}, {29, 1}});
 }
+
+TEST_CASE("greatest common divisor", "[Prime]") {
+    CHECK(gcd(2, 3) == 1);
+    CHECK(gcd(100, 1000) == 100);
+    CHECK(gcd(2762424, 6753) == 3);
+    CHECK(gcd(2762424, 940752) == (2 * 2 * 2) * (3 * 3));
+}

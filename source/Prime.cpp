@@ -107,3 +107,9 @@ auto factorize(Number N) -> Factorization {
     }
     return factors;
 }
+
+auto gcd(const Number x, const Number y) -> Number {
+    return y == 0
+        ? x
+        : gcd(y, x % y);
+}
