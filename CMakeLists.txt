@@ -25,7 +25,7 @@ include_directories(${HEADER_DIR})
 
 set(
     PROJECT_SOURCE_FILES
-    ${SOURCE_DIR}/Foo.cpp
+    ${SOURCE_DIR}/Prime.cpp
 )
 
 add_library(${PROJECT_LIBRARY} SHARED ${PROJECT_SOURCE_FILES})
