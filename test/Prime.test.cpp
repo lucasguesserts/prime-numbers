@@ -21,6 +21,11 @@ TEST_CASE("Prime test", "[Prime]") {
             CHECK(is_prime_erastothenes(n, primes));
         }
     }
+    SECTION("is_prime_erastothenes full") {
+        for (const auto n : SOME_PRIME_NUMBERS) {
+            CHECK(is_prime_erastothenes(n));
+        }
+    }
 }
 
 TEST_CASE("sieve of erastothenes", "[Prime]") {

@@ -25,6 +25,9 @@ TEST_CASE("Prime test - large number", "[benchmark][Prime]") {
     BENCHMARK("erastothenes") {
         return is_prime_erastothenes(N, primes);
     };
+    BENCHMARK("erastothenes full") {
+        return is_prime_erastothenes(N);
+    };
 }
 
 TEST_CASE("Prime test - sieve of erastothenes", "[benchmark][Prime]") {

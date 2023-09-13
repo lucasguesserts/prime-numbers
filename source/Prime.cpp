@@ -80,6 +80,15 @@ auto is_prime_erastothenes(const Number n, const NumberSet & primes) -> bool {
     return true;
 }
 
+auto is_prime_erastothenes(const Number n) -> bool {
+    const auto primes = sieve_of_erastothenes_opt(integer_sqrt(n));
+    if (primes.count(n) > 0) { return true; }
+    for (const auto i : primes) {
+        if (n % i == 0) { return false; }
+    }
+    return true;
+}
+
 auto compute_factor(Number N, const Number p) -> std::pair<Number, Number> {
     // it gets the greatest m such that
     // p**m < N

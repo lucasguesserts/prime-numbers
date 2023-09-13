@@ -12,6 +12,7 @@ auto is_prime_odds(const Number n) -> bool; // O(sqrt(N))
 auto sieve_of_erastothenes(const Number n) -> NumberSet; //  O(N log log N)
 auto sieve_of_erastothenes_opt(const Number n) -> NumberSet; //  O(N log log N)
 auto is_prime_erastothenes(const Number n, const NumberSet & primes) -> bool;
+auto is_prime_erastothenes(const Number n) -> bool;
 
 auto compute_factor(Number N, const Number p) -> std::pair<Number, Number>;
 auto factorize(const Number N) -> Factorization;
