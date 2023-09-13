@@ -37,3 +37,10 @@ TEST_CASE("Prime test - sieve of erastothenes", "[benchmark][Prime]") {
     };
 }
 
+TEST_CASE("Prime test - factoration", "[benchmark][Prime]") {
+    const auto N = Number(2762424);
+    BENCHMARK("factorize") {
+        return factorize(N);
+    };
+}
+

@@ -1,5 +1,7 @@
 #include <catch2/catch_all.hpp>
+#include <string>
 
+#include "Number.hpp"
 #include "Prime.hpp"
 #include "PrimeNumbers.hpp"
 
@@ -65,4 +67,18 @@ TEST_CASE("sieve of erastothenes - opt", "[Prime]") {
         const auto expected = PRIME_NUMBERS_TILL_1000;
         CHECK(actual == expected);
     }
+}
+
+auto factorization_test(const Number x, const Factorization expected) {
+    SECTION(std::to_string(x)) {
+        const auto actual = factorize(x);
+        CHECK(actual == expected);
+    }
+}
+
+TEST_CASE("factorization", "[Prime]") {
+    factorization_test(3, {{3, 1}});
+    factorization_test(100, {{2, 2}, {5, 2}});
+    factorization_test(6753, {{3, 1}, {2251, 1}});
+    factorization_test(2762424, {{2, 3}, {3, 5}, {7, 2}, {29, 1}});
 }

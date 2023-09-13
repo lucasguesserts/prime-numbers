@@ -1,8 +1,10 @@
 #include <cmath>
 #include <iterator>
 #include <stdexcept>
+#include <utility>
 #include <vector>
 
+#include "Number.hpp"
 #include "Prime.hpp"
 
 auto integer_sqrt(const Number n) -> Number {
@@ -76,4 +78,32 @@ auto is_prime_erastothenes(const Number n, const NumberSet & primes) -> bool {
         if (n % i == 0) { return false; }
     }
     return true;
+}
+
+auto compute_factor(Number N, const Number p) -> std::pair<Number, Number> {
+    // it gets the greatest m such that
+    // p**m < N
+    auto count = Number(0);
+    while (N % p == 0) {
+        N /= p;
+        ++count;
+    }
+    return std::make_pair<>(N, count);
+}
+
+auto factorize(Number N) -> Factorization {
+    const auto erastothenes_number = integer_sqrt(N);
+    const auto primes = sieve_of_erastothenes_opt(erastothenes_number);
+    auto factors = Factorization();
+    for (const auto prime : primes) {
+        if (N % prime == 0) {
+            const auto partial_factoration = compute_factor(N, prime);
+            factors[prime] = partial_factoration.second;
+            N = partial_factoration.first;
+        }
+    }
+    if (N != 1) {
+        factors[N] = 1;
+    }
+    return factors;
 }
